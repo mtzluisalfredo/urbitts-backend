@@ -11,6 +11,8 @@ import * as Sentry from '@sentry/node';
 import * as configs from '@/config';
 import { authenticationMiddleware, sentryMiddleware } from '@/middleware';
 
+import graphqlServer from './graphql/graphqlServer';
+
 const { NODE_ENV } = process.env;
 
 const app = express();
@@ -32,6 +34,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors(configs.corsConfig));
 app.use(compression(configs.compressionConfig));
 app.use(cookieParser());
+
+app.use('/graphql', graphqlServer);
 
 // Custom middleware list
 app.use(authenticationMiddleware);
@@ -57,5 +61,7 @@ if (NODE_ENV !== 'development') {
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json(err);
 });
+
+
 
 export default app;
