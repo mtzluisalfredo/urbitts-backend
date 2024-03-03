@@ -48,6 +48,7 @@ export const register = async (req, res, next) => {
     const refreshToken = user.generateToken('2h');
     res.status(201).json({ token, refreshToken });
   } catch (err) {
+    console.log('🧑🏽‍💻 ~ register ~ err:', err);
     next(err);
   }
 };
@@ -61,6 +62,7 @@ export const getCurrentUser = async (req, res, next) => {
     delete req.user.dataValues.password;
     res.json(req.user);
   } catch (err) {
+    console.log('🧑🏽‍💻 ~ getCurrentUser ~ err:', err);
     next(err);
   }
 };

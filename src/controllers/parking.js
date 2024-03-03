@@ -7,23 +7,19 @@ import db from '@/database';
  * Create tweet request
  */
 const createParking = async (req, res, next) => {
-  // {name: "parking 1", location: {lat: "12", lng:"233"}, capacity: 10}
   try {
-    const { id: userId } = req.user;
-    const realUser = await db.models.user.findByPk(userId);
-    const { location, name, capacity } = req.body;
+    const { id: ownerId } = req.user;
+    const realUser = await db.models.user.findByPk(ownerId);
 
     // Create tweet
     const parkingData = {
-      userId: realUser.id,
-      name,
-      capacity,
-      location,
+      ownerId: realUser.id,
+      ...req.body,
     };
 
     // TODO
     const tweet = await db.models.parking
-      .create(parkingData); // { fields: ['name', 'location', 'capacity', 'userId'] }
+      .create(parkingData);
 
     // Save this tweet to redis
     // if (redisClient.connected) {

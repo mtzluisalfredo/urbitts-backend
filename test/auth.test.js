@@ -71,8 +71,8 @@ describe('GET /auth/me', () => {
         res.body.should.have.property('firstName').eql(testUser.firstName);
         res.body.should.have.property('lastName').eql(testUser.lastName);
         res.body.should.have.property('email').eql(testUser.email);
-        res.body.should.have.property('createdAt');
-        res.body.should.have.property('updatedAt');
+        res.body.should.have.property('created_at');
+        res.body.should.have.property('updated_at');
         done();
       });
   });
