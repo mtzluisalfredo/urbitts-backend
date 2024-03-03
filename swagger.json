@@ -269,6 +269,65 @@
         "tags" : [ "auth" ]
       }
     },
+    "/parkings/create": {
+      "post": {
+        "summary": "Create new parking",
+        "security": [{
+          "bearer": []
+        }],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": ["name", "location", "capacity"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "location": {
+                "type": "object",
+                "required": ["latitude", "longitude"],
+                "properties": {
+                  "latitude": {
+                    "type": "string"
+                  },
+                  "longitude": {
+                    "type": "string"
+                  }
+                }
+              },
+              "capacity": {
+                "type": "integer"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Parking"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags": ["parking"],
+        "description": "Create new parking"
+      }
+    },
     "/tweets" : {
       "get" : {
         "summary" : "List all tweets with pagination",
@@ -420,6 +479,25 @@
         },
         "password" : {
           "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "Parking" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "userId" : {
+          "type" : "integer"
         },
         "createdAt" : {
           "type" : "string",

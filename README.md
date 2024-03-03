@@ -75,3 +75,10 @@ Then make the changes in your repository. Finally, send a pull request to this r
 
 ## License
 **Express Starter** is licensed under the **MIT license**.
+
+
+```scrip
+    "db:migrate:generate": "npx sequelize-cli migration:generate --name", // npm run db:migrate:generate -- nombre_de_la_migracion
+    "db:migrate:specific": "npx sequelize-cli db:migrate --name" // npm run db:migrate:specific -- nombre_de_la_migracion
+    
+```
