@@ -1,33 +1,23 @@
-// import createError from 'http-errors';
 import db from '@/database';
-// import redisClient from '@/libs/redis';
 
-/**
- * POST /tweets
- * Create tweet request
- */
 const createParking = async (req, res, next) => {
   try {
     const { id: ownerId } = req.user;
     const realUser = await db.models.user.findByPk(ownerId);
 
-    // Create tweet
+    // Create parking
     const parkingData = {
       ownerId: realUser.id,
       ...req.body,
     };
+    console.log('🧑🏽‍💻 ~ createParking ~ parkingData:', parkingData);
 
     // TODO
     const tweet = await db.models.parking
       .create(parkingData);
 
-    // Save this tweet to redis
-    // if (redisClient.connected) {
-    //   redisClient.set(`Tweet:${tweet.id}`, JSON.stringify(tweet));
-    // }
     return res.status(201).json(tweet);
   } catch (err) {
-    console.log('🧑🏽‍💻 ~ createParking ~ err:', err);
     return next(err);
   }
 };

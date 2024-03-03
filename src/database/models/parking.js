@@ -40,6 +40,10 @@ export default function (sequelize) {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
+    location: {
+      type: DataTypes.JSONB,
+      allowNull: true,
+    },
   }, {
     modelName: 'parking',
     sequelize,
