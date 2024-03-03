@@ -480,11 +480,11 @@
         "password" : {
           "type" : "string"
         },
-        "created_at" : {
+        "createdAt" : {
           "type" : "string",
           "format" : "date-time"
         },
-        "updated_at" : {
+        "updatedAt" : {
           "type" : "string",
           "format" : "date-time"
         }
@@ -499,11 +499,11 @@
         "userId" : {
           "type" : "integer"
         },
-        "created_at" : {
+        "createdAt" : {
           "type" : "string",
           "format" : "date-time"
         },
-        "updated_at" : {
+        "updatedAt" : {
           "type" : "string",
           "format" : "date-time"
         }
@@ -521,11 +521,11 @@
         "tweet" : {
           "type" : "string"
         },
-        "created_at" : {
+        "createdAt" : {
           "type" : "string",
           "format" : "date-time"
         },
-        "updated_at" : {
+        "updatedAt" : {
           "type" : "string",
           "format" : "date-time"
         }

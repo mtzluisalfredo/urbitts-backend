@@ -45,7 +45,7 @@ export const getTweets = async (req, res, next) => {
           model: db.models.user,
           attributes: ['id', 'firstName', 'lastName'],
         },
-        order: [['created_at', 'DESC']],
+        order: [['createdAt', 'DESC']],
       });
 
     if (redisClient.connected) {
